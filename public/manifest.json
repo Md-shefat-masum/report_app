@@ -1,0 +1,26 @@
+{
+    "name": "PERSONAL REPORT",
+    "short_name": "REPORT",
+    "background_color": "#fff",
+    "theme_color": "#0070c0",
+    "categories": [
+        "PERSONAL REPORT"
+    ],
+    "description": "A readable Hacker News app.",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "/",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "/icon144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon.png",
+            "sizes": "100x100",
+            "type": "image/png"
+        }
+    ]
+}

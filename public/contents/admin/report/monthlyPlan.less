@@ -1,0 +1,369 @@
+div.containr {
+    margin: 10px;
+    padding: 10px;
+    width: 25cm;
+    height: 100%;
+    text-align: right;
+    /* border: 1px solid gray;*/
+}
+
+.broder {
+    border-width: 5px;
+    border-style: solid;
+}
+
+table {
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+    width: 100%;
+}
+
+header,
+footer {
+    padding: 10px;
+    height: 44px;
+    color: black;
+    background-color: transparent;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+}
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+
+.print_btn {
+    padding-bottom: 10px;
+}
+
+.frm1 {
+    text-align: center;
+    float: right;
+    /*width: 30%;*/
+    line-height: 18px;
+    font-size: 13.7px;
+    border: 0;
+    border-bottom: 2px dotted;
+}
+
+.frm2 {
+    text-align: center;
+    line-height: 18px;
+    font-size: 13.7px;
+    border: 0;
+    border-bottom: 2px dotted;
+}
+
+.input-borderless {
+    float: right;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+    border: 0;
+    border-bottom: 1px dotted;
+}
+
+/*  Create three equal columns that floats next to each other */
+.column1 {
+    float: left;
+    width: 22%;
+    padding: 0px;
+    height: 25px;
+    margin-top: -1px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*  Create three equal columns that floats next to each other */
+.column2 {
+    float: left;
+    width: 28%;
+    height: 196px;
+    /* padding: 10px;
+       margin-top: -21px; */
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row2:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column3 {
+    float: left;
+    width: 100%;
+    height: 150px;
+    /* padding: 10px;
+       margin-top: -17px;*/
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row3:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column4 {
+    float: left;
+    width: 18%;
+    padding: 5px;
+    height: 153px;
+    margin-top: -15px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row4:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column5 {
+    float: left;
+    width: 18%;
+    padding: 1px;
+    height: 141px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row5 {
+    content: "";
+    display: table;
+    clear: both;
+    padding: 1px;
+    height: 4px;
+}
+
+.column7 {
+    float: left;
+    width: 59%;
+    padding: 7px;
+    height: 100%;
+    /* Should be removed. Only for demonstration */
+}
+
+.column8 {
+    float: left;
+    width: 41%;
+    padding: 0px;
+    height: 100%;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row7:after {
+    content: "";
+    display: table;
+    clear: both;
+    height: 10px;
+}
+
+/*.brdr {
+      border-style: solid;
+      border-width: 1px;
+  }*/
+.report_white_space {
+    white-space: nowrap;
+}
+
+@media print {
+    .noprint {
+        display: none !important;
+    }
+
+    .page-wrapper .page-body-wrapper .page-sidebar~.page-body {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .printarea {
+        margin: 0 !important;
+    }
+
+    .plan_body {
+        overflow-x: unset !important;
+        overflow: unset !important;
+    }
+
+    .plan_body_container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    input[type="month"] {
+        border: 0;
+    }
+
+    .report_white_space {
+        white-space: unset !important;
+    }
+
+    .page-body{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .container{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 0mm;
+    /* this affects the margin in the printer settings */
+}
+
+form {
+    text-align: left;
+}
+
+.report_search_form{
+    max-width: 131px;
+}
+
+table tr td {
+    text-align: left;
+}
+
+#plan_form h6,
+#plan_form h5,
+#plan_form h3,
+#plan_form h4,
+#plan_form b,
+#plan_form label,
+#plan_form tr td,
+#plan_form tr th,
+#plan_form tr label,
+#plan_form tr p {
+    font-family: 'bangla', sans-serif;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.custom_block {
+    padding-right: 15px !important;
+}
+
+.custom_block table tr td {
+    padding-right: 15px !important;
+}
+
+.custom_block input {
+    width: 114px !important;
+}
+
+.custom_block3 table tr td {
+    padding-right: 15px !important;
+}
+
+.custom_block3 input {
+    width: 114px !important;
+}
+
+.custom_block3 .checkbox {
+    display: inline-block;
+    width: unset !important;
+}
+
+.custom_block2 table tr td {
+    padding-right: 15px !important;
+    width: 33% !important;
+}
+
+.custom_block2 input {
+    width: 62px !important;
+}
+
+.custom_block4 tr td {
+    padding-right: 15px;
+}
+
+.custom_block4 tr td span {
+    display: inline-block;
+    display: flex;
+    justify-self: start;
+    align-items: flex-end;
+}
+
+.custom_block4 tr td span input {
+    width: 60px !important;
+    margin-right: 10px;
+}
+
+.custom_block4 tr td span .last_item {
+    width: 80% !important;
+    margin-left: 20px;
+}
+
+.custom_scroll {
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        cursor: pointer;
+        border-radius: 25px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        -ms-border-radius: 25px;
+        -o-border-radius: 25px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #e4e4e47e;
+        border-radius: 25px;
+        cursor: pointer;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-thumb {
+        background: rgba(43, 47, 51, 0.219);
+        border-radius: 25px;
+        height: 10px;
+        cursor: pointer;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(39, 39, 39, 0.568);
+    }
+}
+
+.plan_body {
+    overflow-x: scroll;
+    .custom_scroll;
+}

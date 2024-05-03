@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"> --}}
     <script src="{{ asset('js/sweet_alert.js') }}"></script>
     <script src="{{ asset('js/localforage.min.js') }}"></script>
-    {{-- <script src="{{ asset('pwa.js') }}" defer></script> --}}
+    <script src="{{ asset('pwa.js') }}" defer></script>
     @stack('ccss')
     <script>
         const Toast = Swal.mixin({

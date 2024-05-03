@@ -25,7 +25,7 @@ Auth::routes();
 Route::get('/undefined', function () {
 });
 Route::get('/is-online', function () {
-    return 1;
+    return response()->json();
 });
 
 /**

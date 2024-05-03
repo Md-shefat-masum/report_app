@@ -135,6 +135,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9;
 }
 .report_cell_body .report_cells {
   font-family: 'bangla', sans-serif;
@@ -197,6 +198,46 @@
 }
 .report_cell_body .report_cells .cell_sub_heading.cell_sub_heading_total span {
   line-height: 11px;
+}
+.card .card-header {
+  padding: 15px 30px;
+}
+body[main-theme-layout="main-theme-layout-4"] .report_data_cell_wrapper,
+body[main-theme-layout="main-theme-layout-4"] .report_cell_body .report_cells .cell_sub_heading,
+body[main-theme-layout="main-theme-layout-4"] .report_cell_body .report_cells .cell_heading {
+  background-color: #303841;
+}
+body[main-theme-layout="main-theme-layout-4"] .report_data_cell_wrapper .report_data_cell_body:hover {
+  background-color: #36404a;
+}
+body[main-theme-layout="main-theme-layout-4"] .report_data_cell_wrapper .report_data_cell_body .report_data_cell_group .report_data_cell_parent .report_data_cell input {
+  color: rgba(255, 255, 255, 0.7);
+}
+body[main-theme-layout="main-theme-layout-4"] .report_bn_date {
+  font-weight: 400;
+}
+body[main-theme-layout="main-theme-layout-4"] .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu > li > a.active,
+body[main-theme-layout="main-theme-layout-4"] .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu > li > a:hover {
+  color: #37c4ff;
+}
+body[main-theme-layout="main-theme-layout-4"] input,
+body[main-theme-layout="main-theme-layout-4"] button,
+body[main-theme-layout="main-theme-layout-4"] select,
+body[main-theme-layout="main-theme-layout-4"] optgroup,
+body[main-theme-layout="main-theme-layout-4"] textarea {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 0;
+}
+body[main-theme-layout="main-theme-layout-4"] .input_loading .responsive_edit_in_modal_trigger {
+  color: #c9d1ff;
+}
+body[main-theme-layout="main-theme-layout-4"] .modal_cols input {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);
+}
+body[main-theme-layout="main-theme-layout-4"] .report_cell_body .report_loader {
+  background: rgba(48, 56, 65, 0.66);
 }
 .report_data_cell_wrapper {
   width: max-content;

@@ -9,7 +9,7 @@ on:
     branches: ["main"]
 
 # Authenticate to the the server via ssh
-# and run our deployment script ok
+# and run our deployment script edited
 jobs:
   deploy:
     runs-on: ubuntu-latest

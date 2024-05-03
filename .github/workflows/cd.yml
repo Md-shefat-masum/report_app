@@ -1,25 +1,29 @@
-name: Deploy
+name: Deploy Laravel Project on push
 
-# Trigger the workflow on push and
-# pull request events on the master branch
 on:
   push:
-    branches: ["master"]
-  pull_request:
-    branches: ["master"]
+    branches:
+      - main
 
-# Authenticate to the the server via ssh
-# and run our deployment script updated
 jobs:
-  deploy:
+  web-deploy:
+    name: Deploy
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Deploy to Server
-        uses: appleboy/ssh-action@master
+      - name: Get the latest code
+        uses: actions/checkout@v2.4.0
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.0.0
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: "cd /var/www/myreportbd && ./.scripts/deploy.sh"
+          ## report ftp
+          server: ${{ secrets.REPORT_SERVER }}
+          username: ${{ secrets.REPORT_USERNAME }}
+          password: ${{ secrets.REPORT_PASSWORD }}
+          server-dir: ./
+
+          local-dir: ./
+          protocol: ftp
+          port: 21
+          # timeout: 600000

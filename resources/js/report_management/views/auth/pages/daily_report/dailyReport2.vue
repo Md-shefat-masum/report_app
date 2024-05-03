@@ -59,18 +59,24 @@ export default {
 
     }),
     created: async function(){
-        await this.fetch_report_columns();
+        if(this.report_columns.length){
+            this.fetch_report_columns();
+        }else{
+            await this.fetch_report_columns();
+        }
         await this.change_date(new moment());
         await this.calc_width();
         setTimeout(() => {
             $('.report_data_cell_body_today')[0]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
+        }, 600);
     },
     watch: {
         selected_date: {
             handler: async function(){
                 await this.calc_width();
-                this.set_report_load(true);
+                // setTimeout(() => {
+                //     this.set_report_load(true);
+                // }, 400);
             }
         },
         report_column_values_by_date: {

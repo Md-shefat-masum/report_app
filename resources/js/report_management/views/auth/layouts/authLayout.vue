@@ -23,9 +23,11 @@
                 <div class="nav-right col">
                     <ul class="nav-menus d-lg-flex d-none">
                         <li>
-                            <a href="#!" onclick="javascript:toggleFullScreen()" class="text-dark">
+                            <i v-if="app_theme == ''" @click.prevent="check_app_theme('main-theme-layout-4'),app_theme='dark'" class="fa fa-moon-o"></i>
+                            <i v-else @click.prevent="check_app_theme('light'),app_theme=''" class="fa fa-lightbulb-o"></i>
+                            <!-- <a href="#!" onclick="javascript:toggleFullScreen()" class="text-dark">
                                 <img class="align-self-center pull-right me-2" src="/contents/admin/assets/images/dashboard/browser.png" alt="header-browser">
-                            </a>
+                            </a> -->
                         </li>
                         <li class="onhover-dropdown d-none">
                             <a href="#!" class="txt-dark">
@@ -73,7 +75,7 @@
                             </div>
                             <ul class="profile-dropdown onhover-show-div p-20">
                                 <li>
-                                    <a href="#">
+                                    <a href="#/report/user-profile">
                                         <i class="icon-user"></i>
                                         Edit Profile
                                     </a>
@@ -220,8 +222,11 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 export default {
+    data: ()=>({
+        app_theme: "",
+    }),
     created: async function(){
-        console.log('created');
+        this.app_theme = this.check_app_theme();
         await this.fetch_check_auth();
         setTimeout(() => {
             this.init_sidebar();
@@ -241,6 +246,7 @@ export default {
         ...mapActions([
             'fetch_check_auth',
             'fetch_auth_information',
+            'check_app_theme',
         ]),
         logout: function(){
             if(confirm('sure want to logout.')){

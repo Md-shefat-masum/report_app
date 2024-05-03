@@ -100,7 +100,7 @@ window.onload = async () => {
 
     if ('serviceWorker' in navigator) {
         registration = await navigator.serviceWorker.register('/sw.js');
-        await pwa_services.clear_after_10m();
+        // await pwa_services.clear_after_10m();
 
         let periodic_permission = await pwa_services.get_permission('periodic-background-sync');
         // if (periodic_permission) {

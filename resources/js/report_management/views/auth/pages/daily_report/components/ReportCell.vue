@@ -6,7 +6,7 @@
         @focus="set_selected_day_col({days, col_id})"
         :value="convert_to_bn(secondsToHms(cell_value))"
         placeholder="0:0"
-        :class="`text-center bn ${days}_${col_id}`">
+        :class="`text-center bn ${days}_${col_id} 0${days}_${col_id}`">
 
     <!-- boolean -->
     <input
@@ -14,7 +14,7 @@
         @change="update_cell({value: $event.target.checked?1:0})"
         type="checkbox"
         :checked="cell_value"
-        :class="`${days}_${col_id}`">
+        :class="`${days}_${col_id} 0${days}_${col_id}`">
 
     <!-- number -->
     <input type="text"
@@ -23,7 +23,7 @@
         v-else
         placeholder="-"
         :value="convert_to_bn(cell_value)"
-        :class="`text-center bn ${days}_${col_id}`">
+        :class="`text-center bn ${days}_${col_id} 0${days}_${col_id}`">
 </template>
 
 <script>
@@ -103,6 +103,7 @@ export default {
             let days = this.days || 1;
             days = this.days.toString().padStart(2,0);
             let index = `${year}-${month_no}-${days}`+this.col_id;
+            // console.log(this.report_column_values_by_date, index);
             let col_info = this.report_column_values_by_date[index];
             if(col_info && col_info.value){
                 return col_info;

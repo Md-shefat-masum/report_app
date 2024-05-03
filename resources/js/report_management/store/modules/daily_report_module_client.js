@@ -192,6 +192,7 @@ const actions = {
         }
 
         await dispatch('calc_col_values');
+        await dispatch('calc_col_value_by_date');
 
         let check_internet = await isAppOnline();
         if (check_internet) {

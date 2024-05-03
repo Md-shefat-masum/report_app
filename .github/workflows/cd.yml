@@ -22,4 +22,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: "cd /var/www/miniblog && ./.scripts/deploy.sh"
+          script: |
+            cd ~/var/www/myreportbd
+            git pull origin main

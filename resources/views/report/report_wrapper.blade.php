@@ -14,7 +14,7 @@
 
     @include('report.includes.pwa')
 
-    <title>Personal Report</title>
+    <title>Personal Report App</title>
 
     <style>
         @font-face {

@@ -45,17 +45,21 @@ const actions = {
     fetch_report_columns: async function ({ state }, payload) {
         let check_internet = await isAppOnline();
         let data = [];
-        if (check_internet) {
-            let res = await axios.get('/report/get-report-columns');
-            data = res.data;
-        } else {
-            let cache = await caches.open('api_cache');
-            let cache_url = location.origin + `/api/v1/report/get-report-columns`;
-            let match = await cache.match(cache_url);
 
-            if (match) {
-                let cache_data = await match.json();
-                data = cache_data;
+        let cache = await caches.open('api_cache');
+        let cache_url = location.origin + `/api/v1/report/get-report-columns`;
+        let match = await cache.match(cache_url);
+        if (match) {
+            let cache_data = await match.json();
+            data = cache_data;
+        }
+
+        if (check_internet) {
+            if(!match){
+                let res = await axios.get('/report/get-report-columns');
+                data = res.data;
+            }else{
+                axios.get('/report/get-report-columns');
             }
         }
 
@@ -83,35 +87,41 @@ const actions = {
     fetch_report_column_values: async function ({ state, dispatch }, payload) {
         state.report_loaded = false;
         let check_internet = await isAppOnline();
+
+        let cache = await caches.open('api_cache');
+        let cache_url = location.origin + `/api/v1/report/get-report-column-values?date=${state.selected_date.year_month}-01`;
+        let match = await cache.match(cache_url);
+
+        if (match) {
+            let data = await match.json();
+            state.report_column_values = data;
+        } else {
+            state.report_column_values = state.report_column_values.map(i => {
+                i.value = 0;
+                return i;
+            })
+        }
+
         if (check_internet) {
             var url = new URL(location.origin + '/api/v1/report/get-report-column-values');
             let { year, month_no } = state.selected_date;
             url.searchParams.set('date', `${year}-${month_no}-01`);
 
-            let res = await axios.get(url.href);
-            state.report_column_values = res.data;
-            state.report_column_values_updated = res.data;
-        } else {
-
-            let cache = await caches.open('api_cache');
-            let cache_url = location.origin + `/api/v1/report/get-report-column-values?date=${state.selected_date.year_month}-01`;
-            let match = await cache.match(cache_url);
-
-            if (match) {
-                let data = await match.json();
-                state.report_column_values = data;
-            } else {
-                state.report_column_values = state.report_column_values.map(i => {
-                    i.value = 0;
-                    return i;
-                })
+            if(!match){
+                let res = await axios.get(url.href);
+                state.report_column_values = res.data;
+                state.report_column_values_updated = res.data;
+            }else{
+                axios.get(url.href);
             }
         }
 
         await dispatch('calc_col_value_by_date');
         await dispatch('calc_col_values');
 
-        state.report_loaded = true;
+        setTimeout(() => {
+            state.report_loaded = true;
+        }, 250);
     },
 
     calc_col_value_by_date: function ({ state }) {
@@ -154,7 +164,7 @@ const actions = {
     save_report_data: async function ({ state, dispatch }, payload) {
 
         let value = +payload.value;
-        let report_column_values = {
+        let report_column_value = {
             "user_id": '',
             "updated_at": "",
             "created_at": "",
@@ -174,7 +184,7 @@ const actions = {
         if (col_value) {
             col_value.value = value;
         } else {
-            state.report_column_values.push(report_column_values);
+            state.report_column_values.push(report_column_value);
         }
 
         try {
@@ -205,7 +215,7 @@ const actions = {
             } else {
                 offline_cell_data = JSON.parse(offline_cell_data);
             }
-            offline_cell_data.push(report_column_values);
+            offline_cell_data.push(report_column_value);
             await pwa_services.register_sync("report_saved_offline");
             await localforage.setItem("offline_cell_data", JSON.stringify(offline_cell_data));
         }
@@ -283,7 +293,7 @@ const mutations = {
     },
 
     set_selected_day_col: (state, { days, col_id }) => {
-        state.selected_day = days.toString().padStart(2,'0');
+        state.selected_day = days.toString().padStart(2, '0');
         state.selected_col = col_id;
 
         let selected_col_value = state.report_column_values.find((i) => {

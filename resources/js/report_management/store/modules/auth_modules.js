@@ -47,6 +47,29 @@ const actions = {
                 window.s_alert('something went wrong, reload window to fix it. '+(err.response?.data?.err_message || err.response?.data?.message), 'error');
             })
     },
+    check_app_theme:  function(state, value){
+        let body = document.querySelector('body');
+        let check = localStorage.getItem('app_theme');
+
+        if(value == 'light'){
+            body.setAttribute('main-theme-layout', "");
+            localStorage.removeItem('app_theme');
+            return "";
+        }
+        else if(value == 'main-theme-layout-4'){
+            body.setAttribute('main-theme-layout', value);
+            localStorage.setItem('app_theme', value);
+            return value;
+        }
+        else if(check){
+            body.setAttribute('main-theme-layout', check);
+            return check;
+        }
+        else{
+            body.setAttribute('main-theme-layout',"");
+            return "";
+        }
+    }
 }
 
 // mutators

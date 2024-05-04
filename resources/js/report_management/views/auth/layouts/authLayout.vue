@@ -21,7 +21,7 @@
                     </div> -->
                 </div>
                 <div class="nav-right col">
-                    <ul class="nav-menus d-lg-flex d-none">
+                    <ul class="nav-menus">
                         <li>
                             <i v-if="app_theme == ''" @click.prevent="check_app_theme('main-theme-layout-4'),app_theme='dark'" class="fa fa-moon-o"></i>
                             <i v-else @click.prevent="check_app_theme('light'),app_theme=''" class="fa fa-lightbulb-o"></i>
@@ -63,7 +63,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="onhover-dropdown">
+                        <li class="onhover-dropdown d-none d-lg-block">
                             <div class="d-flex align-items-center">
                                 <img class="align-self-center pull-right flex-shrink-0 me-2" src="/contents/admin/assets/images/dashboard/user.png" alt="header-user"/>
                                 <div>

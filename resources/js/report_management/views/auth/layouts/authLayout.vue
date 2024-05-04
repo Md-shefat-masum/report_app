@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="main-header-right">
-                <div class="mobile-sidebar col-1 ps-0">
+                <div class="mobile-sidebar col-lg-1 col-4 ps-0">
                     <i class="fa switch-nav fa-align-left btn btn-primary btn-sm p-2"></i>
                     <!-- <div class="text-start switch-sm">
                         <label class="switch">
@@ -20,11 +20,13 @@
                         </label>
                     </div> -->
                 </div>
-                <div class="nav-right col">
-                    <ul class="nav-menus">
+                <div class="nav-right col responsive_nav_right d-flex align-items-center">
+                    <div>
+                        <i v-if="app_theme == ''" @click.prevent="check_app_theme('main-theme-layout-4'),app_theme='dark'" class="fa fa-2x fa-moon-o"></i>
+                        <i v-else @click.prevent="check_app_theme('light'),app_theme=''" class="fa fa-2x fa-lightbulb-o"></i>
+                    </div>
+                    <ul class="nav-menus d-lg-flex d-none">
                         <li>
-                            <i v-if="app_theme == ''" @click.prevent="check_app_theme('main-theme-layout-4'),app_theme='dark'" class="fa fa-moon-o"></i>
-                            <i v-else @click.prevent="check_app_theme('light'),app_theme=''" class="fa fa-lightbulb-o"></i>
                             <!-- <a href="#!" onclick="javascript:toggleFullScreen()" class="text-dark">
                                 <img class="align-self-center pull-right me-2" src="/contents/admin/assets/images/dashboard/browser.png" alt="header-browser">
                             </a> -->
@@ -89,6 +91,7 @@
                             </ul>
                         </li>
                     </ul>
+
                     <div class="d-none mobile-toggle">
                         <i class="icon-more"></i>
                     </div>

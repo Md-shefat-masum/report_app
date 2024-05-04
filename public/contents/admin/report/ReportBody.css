@@ -227,7 +227,9 @@ body[main-theme-layout="main-theme-layout-4"] optgroup,
 body[main-theme-layout="main-theme-layout-4"] textarea {
   background: transparent;
   color: rgba(255, 255, 255, 0.7);
-  border: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 body[main-theme-layout="main-theme-layout-4"] .input_loading .responsive_edit_in_modal_trigger {
   color: #c9d1ff;

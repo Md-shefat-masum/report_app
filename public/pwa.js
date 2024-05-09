@@ -10,7 +10,7 @@ pwa_services = {
         const minutesDifference = timeDifference / (60 * 1000);
         localStorage.setItem("last_active", new Date().toLocaleString());
 
-        let time_diff_min = 24*60;
+        let time_diff_min = 24 * 60;
         if (minutesDifference >= time_diff_min && navigator.onLine) {
             await caches.keys().then(function (cacheNames) {
                 return Promise.all(
@@ -33,7 +33,9 @@ pwa_services = {
         }
     },
     get_permission: async (query) => {
-        let result = await navigator.permissions.query({ name: query });
+        let result = await navigator.permissions.query({
+            name: query
+        });
         return result.state === "granted" ? true : false;
     },
     register_periodic_sync: async (sync_tag) => {
@@ -114,6 +116,28 @@ window.onload = async () => {
     } else {
         console.log('service worker not supported.');
     }
+
+    fetch('/api/v1/user/clear-cache', {
+            method: 'POST',
+            headers: {
+                "Authorization": "Bearer " + localStorage.token,
+            },
+        })
+        .then(res => res.json())
+        .then(async (data) => {
+            if (!data) {
+                async function clearCacheStorage() {
+                    try {
+                        const cacheNames = await caches.keys();
+                        await Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
+                        console.log('Cache storage cleared successfully');
+                    } catch (error) {
+                        console.error('Error clearing cache storage:', error);
+                    }
+                }
+
+                await clearCacheStorage();
+                location.reload();
+            }
+        })
 }
-
-

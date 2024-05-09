@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\EmailVerifyMail;
 use App\Mail\ForgetPasswordMail;
 use App\Models\User;
+use App\Models\UserCacheClear;
 use App\Models\UserEmailVerify;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -97,7 +98,7 @@ class ApiLoginController extends Controller
                 'data' => $validator->errors(),
             ], 422);
         } else {
-            $data = $request->except(['password', 'password_confirmation', 'image','email_verify_code']);
+            $data = $request->except(['password', 'password_confirmation', 'image', 'email_verify_code']);
             $data['role_id'] = 4;
             $data['password'] = Hash::make($request->password);
             $user = User::create($data);
@@ -111,7 +112,7 @@ class ApiLoginController extends Controller
             $user->slug = $user->name . $user->id . rand(1000, 9999);
             $user->save();
 
-            UserEmailVerify::where('email', $request->email)->update(['validated'=> 1]);
+            UserEmailVerify::where('email', $request->email)->update(['validated' => 1]);
 
             Auth::login($user);
             $user = User::where('id', Auth::user()->id)->with('role_information')->first();
@@ -248,6 +249,16 @@ class ApiLoginController extends Controller
     {
         $user = User::find($request->id);
         return response()->json($user);
+    }
+
+    public function clear_cache()
+    {
+        $check = UserCacheClear::where("user_id", auth()->user()->id)->first();
+        $result = $check ? 1 : 0;
+        if (!$result) {
+            UserCacheClear::create(["user_id" => auth()->user()->id]);
+        }
+        return response()->json($result);
     }
 
     public function forget_mail(Request $request)

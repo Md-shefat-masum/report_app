@@ -38,6 +38,7 @@ Route::group(
                 Route::get('/user_info', 'Auth\ApiLoginController@user_info');
                 Route::post('/check-auth', 'Auth\ApiLoginController@check_auth');
                 Route::post('/find-user-info', 'Auth\ApiLoginController@find_user_info');
+                Route::post('/clear-cache', 'Auth\ApiLoginController@clear_cache');
             });
 
             Route::group(['prefix' => 'user'], function () {

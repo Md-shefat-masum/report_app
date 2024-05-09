@@ -66,14 +66,13 @@
             }
         });
 
-        window.s_alert = (title="success",icon='success') => {
+        window.s_alert = (title = "success", icon = 'success') => {
             Toast.fire({
                 icon: icon,
                 title: title,
             })
         }
     </script>
-
 </head>
 
 <body>
@@ -95,7 +94,7 @@
     <script src="/js/vue_report_management.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="{{ asset('contents/admin') }}/assets/js/bootstrap/bootstrap.bundle.min.js" ></script>
+    <script src="{{ asset('contents/admin') }}/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
 
     <!-- Theme js-->
     <script src="{{ asset('contents/admin') }}/assets/js/script.js"></script>

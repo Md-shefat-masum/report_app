@@ -72,6 +72,30 @@
                 title: title,
             })
         }
+
+        fetch('/api/v1/user/clear-cache', {
+                method: 'POST',
+                headers: {
+                    "Authorization": "Bearer " + localStorage.token,
+                },
+            })
+            .then(res => res.json())
+            .then(async (data) => {
+                if (!data) {
+                    async function clearCacheStorage() {
+                        try {
+                            const cacheNames = await caches.keys();
+                            await Promise.all(cacheNames.map(cacheName => caches.delete(cacheName)));
+                            console.log('Cache storage cleared successfully');
+                        } catch (error) {
+                            console.error('Error clearing cache storage:', error);
+                        }
+                    }
+
+                    await clearCacheStorage();
+                    location.reload();
+                }
+            })
     </script>
 </head>
 

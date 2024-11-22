@@ -96,7 +96,6 @@
                     location.reload();
                 }
             })
-
     </script>
 </head>
 

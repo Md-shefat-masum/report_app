@@ -254,11 +254,10 @@ class ApiLoginController extends Controller
     public function clear_cache()
     {
         $check = UserCacheClear::where("user_id", auth()->user()->id)->first();
-        $result = $check ? 1 : 0;
-        if (!$result) {
+        if (!$check) {
             UserCacheClear::create(["user_id" => auth()->user()->id]);
         }
-        return response()->json($result);
+        return response()->json($check);
     }
 
     public function forget_mail(Request $request)

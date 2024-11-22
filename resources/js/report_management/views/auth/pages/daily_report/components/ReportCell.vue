@@ -90,12 +90,16 @@ export default {
                 $(`.${this.days}_${this.col_id}`).prop('checked',value);
             }
 
-            await this.save_report_data({
+            let report_data = {
                 value,
                 date,
                 column_id: this.col_id,
                 cell_id: this.get_value().cell_id,
-            });
+            };
+
+            // console.log(report_data, this.get_value(), this.report_column_values_by_date);
+
+            await this.save_report_data(report_data);
 
         },200),
         get_value: function(){
@@ -106,7 +110,10 @@ export default {
             // console.log(this.report_column_values_by_date, index);
             let col_info = this.report_column_values_by_date[index];
             if(col_info && col_info.value){
-                return col_info;
+                return {
+                    ...col_info,
+                    index,
+                };
             }
             return {
                 value: '',

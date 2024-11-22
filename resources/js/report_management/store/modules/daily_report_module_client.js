@@ -171,7 +171,7 @@ const actions = {
             "column_id": payload.column_id,
             "date": payload.date,
             "value": value,
-            "id": payload.cell_id || (parseInt(Math.random()) * 1000 + payload.date),
+            "id": payload.cell_id || (parseInt(Math.random() * 1000) + payload.date),
             "col_info": {
                 "id": payload.column_id,
                 "input_type": "text",

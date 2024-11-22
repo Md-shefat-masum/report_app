@@ -12,7 +12,7 @@
     <meta name="keywords" content="My report bd, shibir report, personal report, report management">
     <meta name="author" content="BICS, Bangladesh Islami Chhatra Shibir">
 
-    @include('report.includes.pwa')
+    {{-- @include('report.includes.pwa') --}}
 
     <title>Personal Report App</title>
 
@@ -51,7 +51,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css"> --}}
     <script src="{{ asset('js/sweet_alert.js') }}"></script>
     <script src="{{ asset('js/localforage.min.js') }}"></script>
-    <script src="{{ asset('pwa.js') }}" defer></script>
+    {{-- <script src="{{ asset('pwa.js') }}" defer></script> --}}
     @stack('ccss')
     <script>
         const Toast = Swal.mixin({
@@ -96,6 +96,7 @@
                     location.reload();
                 }
             })
+
     </script>
 </head>
 

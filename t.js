@@ -20,3 +20,18 @@
     updated file
 
  */
+
+/*
+    Project: myreportbd update
+    User: MD Shefat Masum
+    Github: https://github.com/md-shefat-masum
+    Date: 22 November 2024
+    Time: 22:35:19
+    Path: t.js
+    Task List: custom scripts, cart managment
+*/
+
+
+
+
+

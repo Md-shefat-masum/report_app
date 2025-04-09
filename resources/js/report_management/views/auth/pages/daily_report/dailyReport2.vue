@@ -119,7 +119,7 @@ export default {
                         $(this).parents('.report_data_cell_parent').addClass('input_loading');
                     });
                     resolve(1)
-                }, 400);
+                }, 10000);
             })
         },
 
@@ -129,14 +129,22 @@ export default {
                 cels.forEach(el=>{
                     var parent_el = el.dataset.parent_class;
                     if(parent_el){
+                        // parent_el = parent_el.replaceAll(' ', '_');
+
                         try {
                             if(cels.length == 2){
                                 $(el).css('width','100%')
                             }else{
-                                $(el).css('width', $('.'+parent_el)[0].style.width);
+                                let p_el = $('.'+parent_el)[0];
+                                if(p_el){
+                                    $(el).css('width', p_el.style.width);
+                                }else{
+                                    reject(parent_el);
+                                }
                             }
                         } catch (error) {
-                            console.log(error, parent_el);
+                            console.log(error, el, parent_el, '.report_data_cell');
+                            return reject(0);
                         }
                     }
                 });
@@ -148,7 +156,7 @@ export default {
                         try {
                             $(el).css('width', $('.'+parent_el)[0].style.width);
                         } catch (error) {
-                            console.log(error, parent_el);
+                            console.log(error, parent_el, '.report_data_cell_group');
                         }
                     }
                 });
@@ -160,7 +168,7 @@ export default {
                         try {
                             $(el).css('width', $('.'+parent_el)[0].style.width);
                         } catch (error) {
-                            console.log(error, parent_el);
+                            console.log(error, parent_el, '.cell_sub_heading_total');
                         }
                     }
                 });
@@ -172,10 +180,11 @@ export default {
                         try {
                             $(el).css('width', $('.'+parent_el)[0].style.width);
                         } catch (error) {
-                            console.log(error, parent_el);
+                            console.log(error, parent_el, '.total_group');
                         }
                     }
                 });
+
                 resolve(1);
             })
         },

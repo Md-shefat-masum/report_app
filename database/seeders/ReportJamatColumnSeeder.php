@@ -21,90 +21,105 @@ class ReportJamatColumnSeeder extends Seeder
                 'bn_name' => 'কুরআন অধ্যয়ন (✓)',
                 'input_type' => 'checkbox',
                 'value_type' => 'boolean',
+                'child' => [],
             ],
             [
                 'en_name' => 'hadith',
                 'bn_name' => 'হাদিস অধ্যয়ন ( সংখ্যা )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
                 'en_name' => 'literature',
                 'bn_name' => 'ইসলামী সাহিত্য অধ্যয়ন ( পৃষ্ঠা )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'jamat salat',
+                'en_name' => 'jamat_salat',
                 'bn_name' => 'জামায়াতে নামাজ ( ওয়াক্ত সংখ্যা )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'targeted dawah contact',
+                'en_name' => 'targeted_dawah_contact',
                 'bn_name' => 'দাওয়াতি টার্গেট সাক্ষাত ( কতবার )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'targeted orker contact',
+                'en_name' => 'targeted_worker_contact',
                 'bn_name' => 'কর্মী টার্গেট সাক্ষাত ( কতবার )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'member contact',
+                'en_name' => 'member_contact',
                 'bn_name' => 'সদস্য (রুকন) টার্গেট সাক্ষাত ( কতবার )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'worker contact',
+                'en_name' => 'worker_contact',
                 'bn_name' => 'কর্মী যোগাযোগ ( কতবার )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'book distribution',
+                'en_name' => 'book_distribution',
                 'bn_name' => 'বই বিলি ( কতটি )',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'family meeting',
+                'en_name' => 'family_meeting',
                 'bn_name' => 'পারিবারিক বৈঠক (✓)',
                 'input_type' => 'checkbox',
                 'value_type' => 'boolean',
+                'child' => [],
             ],
             [
-                'en_name' => 'social work',
+                'en_name' => 'social_work',
                 'bn_name' => 'সামাজিক কাজ (✓)',
                 'input_type' => 'checkbox',
                 'value_type' => 'boolean',
+                'child' => [],
             ],
             [
-                'en_name' => 'org work',
+                'en_name' => 'org_work',
                 'bn_name' => 'সময় দান (ঘন্টা)',
                 'input_type' => 'text',
                 'value_type' => 'time',
+                'child' => [],
             ],
             [
-                'en_name' => 'sofor amount',
+                'en_name' => 'sofor_amount',
                 'bn_name' => 'সফর সংখ্যা',
                 'input_type' => 'text',
                 'value_type' => 'number',
+                'child' => [],
             ],
             [
-                'en_name' => 'is keeped report',
+                'en_name' => 'is_keeped_report',
                 'bn_name' => 'রিপোর্ট রাখা (✓)',
                 'input_type' => 'checkbox',
                 'value_type' => 'boolean',
+                'child' => [],
             ],
             [
-                'en_name' => 'self analysis',
+                'en_name' => 'self_analysis',
                 'bn_name' => 'আত্মসমালোচনা (✓)',
                 'input_type' => 'checkbox',
                 'value_type' => 'boolean',
+                'child' => [],
             ],
         ];
 
@@ -133,7 +148,7 @@ class ReportJamatColumnSeeder extends Seeder
             $report->slug = str_replace(' ', '-', $item->bn_name);
             $report->save();
 
-            if (count($item->child)) {
+            if (isset($item->child) && count($item->child)) {
                 foreach ($item->child as $child) {
                     $child = (object) $child;
                     $report2 = new ReportColumn();
@@ -156,21 +171,21 @@ class ReportJamatColumnSeeder extends Seeder
 
         ReportColumnVisibility::truncate();
         ReportColumnVisibility::insert([
-            [
-                'user_id' => 1,
-                'column_id' => 3,
-                'visibility' => 1,
-            ],
-            [
-                'user_id' => 1,
-                'column_id' => 4,
-                'visibility' => 1,
-            ],
-            [
-                'user_id' => 1,
-                'column_id' => 5,
-                'visibility' => 1,
-            ],
+            // [
+            //     'user_id' => 1,
+            //     'column_id' => 3,
+            //     'visibility' => 1,
+            // ],
+            // [
+            //     'user_id' => 1,
+            //     'column_id' => 4,
+            //     'visibility' => 1,
+            // ],
+            // [
+            //     'user_id' => 1,
+            //     'column_id' => 5,
+            //     'visibility' => 1,
+            // ],
         ]);
     }
 }

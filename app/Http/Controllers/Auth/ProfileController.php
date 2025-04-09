@@ -63,6 +63,7 @@ class ProfileController extends Controller
                     'data' => ['old_password' => ['your given old password not matching']],
                 ], 422);
             }
+            $user->password = Hash::make($newpassword);
         }
 
         $user_name = $request->user_name;

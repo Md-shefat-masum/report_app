@@ -23,8 +23,6 @@ class ProfileController extends Controller
             // 'mobile_number' => ['required'],
         ]);
 
-        // Storage::put();
-
         if ($validator->fails()) {
             return response()->json([
                 'err_message' => 'validation error',

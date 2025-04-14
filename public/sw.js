@@ -65,7 +65,8 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('fetch', function (e) {
     const url = new URL(e.request.url);
-    const isPrecachedRequest = precachedAssets.includes(url.pathname);
+    const path = url.pathname + url.search;
+    const isPrecachedRequest = precachedAssets.includes(path);
     const destination = e.request.destination;
 
     if (isPrecachedRequest) {
